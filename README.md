@@ -5,4 +5,4 @@ their current location and their ideal restaurants based on the type of food and
 given on a map. They are able to see where the restaurants are relative to their location. 
 This web application uses HTML5 Geolocation to obtain the user's current location and Yelp's Fusion API
 to search for restaurants based on the user's current location, type of food, and price range($, $$, $$$, $$$$)
-To use the web application, go to .
+To use the web application, go to https://amogh-flask-web.herokuapp.com/.
