@@ -1,5 +1,8 @@
-# amgg12301.github.io
-This is a web application built using Flask in Python, JavaScript, and HTML
-that helps people find their restaurant much easier. This application plots
-their current location and their ideal restaurants within a given distance
-on a map. To use the web application, go to https://amgg12301.github.io
+# Flask-Web-App
+This is a web application built using Flask in Python, JavaScript, HTML, and CSS
+that helps people find their next place to eat at in a much easier way. This application plots
+their current location and their ideal restaurants based on the type of food and price range
+given on a map. They are able to see where the restaurants are relative to their location. 
+This web application uses HTML5 Geolocation to obtain the user's current location and Yelp's Fusion API
+to search for restaurants based on the user's current location, type of food, and price range($, $$, $$$, $$$$)
+To use the web application, go to .
