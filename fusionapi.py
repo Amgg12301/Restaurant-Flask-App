@@ -31,7 +31,7 @@ try:
     from urllib.parse import urlencode
 except ImportError:
     # Fall back to Python 2's urllib2 and urllib
-    from urllib2 import HTTPError
+    from urllib import HTTPError
     from urllib import quote
     from urllib import urlencode
 
@@ -41,8 +41,7 @@ except ImportError:
 # It now uses private keys to authenticate requests (API Key)
 # You can find it on
 # https://www.yelp.com/developers/v3/manage_app
-API_KEY= 'Ah-aLz_0uR4JkXM3jQIGuGb5ci5c79cQrFfsRGGOia_UZBjBmuLNGplv_1eg5LGUS-AyKYcLN_dW9LUj99y-7sChsTMsC0iL2941i6JlSZo25CciOmDYFA8AGoVPXnYx'
-
+API_KEY = 'MLr3UDZ5PA4ZJOlKk0RsNvFDYwhARImGCXT0NF2zjcGZv1NsIsYtwRODsiURFyx75huuGJFe6T8RbTkExwAS2bMlxmeIa8TXMGfc545sAbMegzkboU6i7WziJTBkXnYx'
 
 
 # API constants, you shouldn't have to change these.
@@ -54,7 +53,7 @@ BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
 DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 3
+SEARCH_LIMIT = 10
 
 
 def request(host, path, api_key, url_params=None):
@@ -82,7 +81,7 @@ def request(host, path, api_key, url_params=None):
     return response.json()
 
 
-def search(api_key, term, location):
+def search(api_key, term, latitude, longitude, price):
     """Query the Search API by a search term and location.
     Args:
         term (str): The search term passed to the API.
@@ -93,7 +92,9 @@ def search(api_key, term, location):
 
     url_params = {
         'term': term.replace(' ', '+'),
-        'location': location.replace(' ', '+'),
+        'latitude': latitude,
+        'longitude': longitude,
+        'price': price,
         'limit': SEARCH_LIMIT
     }
     return request(API_HOST, SEARCH_PATH, api_key, url_params=url_params)
@@ -111,53 +112,23 @@ def get_business(api_key, business_id):
     return request(API_HOST, business_path, api_key)
 
 
-def query_api(term, location):
+def query_api(term, latitude, longitude, price):
     """Queries the API by the input values from the user.
     Args:
         term (str): The search term to query.
         location (str): The location of the business to query.
     """
-    response = search(API_KEY, term, location)
-
+    response = search(API_KEY, term, latitude, longitude, price)
     businesses = response.get('businesses')
 
     if not businesses:
-        print(u'No businesses for {0} in {1} found.'.format(term, location))
+        print(u'No businesses for {0} in {1} {2} found for {3}.'.format(term, latitude, longitude, price))
         return
 
     business_id = businesses[0]['id']
 
-    print(u'{0} businesses found, querying business info ' \
-        'for the top result "{1}" ...'.format(
-            len(businesses), business_id))
-    response = get_business(API_KEY, business_id)
+    for business in businesses:
+        print(business)
 
-    print(u'Result for business "{0}" found:'.format(business_id))
-    pprint.pprint(response, indent=2)
-
-
-def main():
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
-                        type=str, help='Search term (default: %(default)s)')
-    parser.add_argument('-l', '--location', dest='location',
-                        default=DEFAULT_LOCATION, type=str,
-                        help='Search location (default: %(default)s)')
-
-    input_values = parser.parse_args()
-
-    try:
-        query_api(input_values.term, input_values.location)
-    except HTTPError as error:
-        sys.exit(
-            'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
-                error.code,
-                error.url,
-                error.read(),
-            )
-        )
-
-
-if __name__ == '__main__':
-    main()
+    return businesses
+        
