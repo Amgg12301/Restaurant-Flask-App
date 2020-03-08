@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("geolocation.html")
+    return render_template("index.html")
 
 
 @app.route('/results', methods=['GET','POST'])
@@ -34,7 +34,7 @@ def results():
             results = []
         return render_template('results.html', results = results, price = price, latitude = latitude, longitude = longitude)
 
-    return render_template('geolocation.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':
    app.run(host = 'localhost', debug = True, port = 5000)
