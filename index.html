@@ -40,7 +40,7 @@ label {
     <p style="font-family:optima;color:white;size:10">Allow me to access your location! Otherwise, we cannot find restaurants near you!</p>
     <button type = "button" onclick="getLocation()">Get Location</button>
     <br></br>
-      <form action = "{{ url_for('results') }}" method = "POST">
+      <form action = "/results" method = "POST">
           <p><label for="mylocation" style="color:white;">What is your location?&nbsp;</label></p>
           <p><input size="40" id="mylocation" type="text" name="location" placeholder = "1680 Capital One Drive McLean, VA 22102" ></p>
          <p style="font-family:optima;color:white;size:0">Enter Type of Food:</p>
