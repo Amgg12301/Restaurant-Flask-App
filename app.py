@@ -30,7 +30,7 @@ def results():
             results = []
         return render_template('results.html', results = results, price = price)
     else:
-        return render_template('geolocation.html')
+        return render_template('index.html')
 
-if __name__ == '__main__':
-   app.run(host = 'localhost', debug = True, port = 5000)
+if __name__ == "__main__":
+    app.run()
