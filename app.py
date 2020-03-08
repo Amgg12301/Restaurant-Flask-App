@@ -12,7 +12,7 @@ def index():
 
 @app.route('/results', methods=['GET','POST'])
 def results():
-    #if request.method == 'POST':
+    if request.method == 'POST':
         type = request.form['type']
         location = request.form['location']
         price = request.form['price']
@@ -29,8 +29,8 @@ def results():
         if not results:
             results = []
         return render_template('results.html', results = results, price = price)
-    #else:
-    #    return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 if __name__ == "__main__":
     app.run()
