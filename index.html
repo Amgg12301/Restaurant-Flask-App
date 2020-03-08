@@ -37,20 +37,20 @@ label {
 
 <p style="font-family:optima;color:white;size:10;font-size:40px">Can't Figure Out What You're Craving Today??</p>
 <p style="font-family:optima;color:white;size:10;font-size:25px">Allow Me to Help You Out :)</p>
-    <p style="font-family:optima;color:white;size:10">Allow me to access your location! Otherwise, we cannot find restaurants near you!</p>
-    <button type = "button" onclick="getLocation()">Get Location</button>
+    <p style="font-family:optima;color:white;size:10" align = "center">Allow me to access your location! Otherwise, we cannot find restaurants near you!</p>
+    <button type = "button" onclick="getLocation()" align = "center">Get Location</button>
     <br></br>
       <form action = "/results" method = "POST">
           <p><label for="mylocation" style="color:white;">What is your location?&nbsp;</label></p>
           <p><input size="40" id="mylocation" type="text" name="location" placeholder = "1680 Capital One Drive McLean, VA 22102" ></p>
          <p style="font-family:optima;color:white;size:0">Enter Type of Food:</p>
-         <p><input type = "text" name = "type" placeholder="Chinese? Mexican??"/></p>
+         <p><input type = "text" name = "type" placeholder="Chinese? Mexican??" required/></p>
           <div class="inputs">
           <p style="font-family:optima;color:white;size:10">Select Your Price:</p>
-          <input id = "price" type="radio" name="price" value="$"/><label for="price" style="color:white;">&nbsp;Under $10</label>
-          <input id = "price" type="radio" name="price" value="$$" /> <label for="price" style="color:white;">&nbsp;$11-$30</label>
-          <input id = "price" type="radio" name="price" value="$$$" /> <label for="price" style="color:white;">&nbsp;$31-$60</label>
-          <input id = "price" type="radio" name="price" value="$$$$" /> <label for="price" style="color:white;">&nbsp;Over $61</label>
+          <input id = "price" type="radio" name="price" value="$" required/><label for="price" style="color:white;">&nbsp;Under $10</label>
+          <input id = "price" type="radio" name="price" value="$$" required/> <label for="price" style="color:white;">&nbsp;$11-$30</label>
+          <input id = "price" type="radio" name="price" value="$$$" required/> <label for="price" style="color:white;">&nbsp;$31-$60</label>
+          <input id = "price" type="radio" name="price" value="$$$$" required/> <label for="price" style="color:white;">&nbsp;Over $61</label>
           </div>
          <p><input type = "submit" value = "submit" /></p>
       </form>
