@@ -8,16 +8,29 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("geolocation.html")
+    return render_template("index.html")
 
 @app.route('/results', methods=['GET','POST'])
 def results():
     if request.method == 'POST':
         type = request.form['type']
+        location = request.form['location']
         price = request.form['price']
-        location = request.form['yourLocation']
-        results = query_api(term = type, location = location);
-    return render_template('results.html', results = results)
+        if(price == '$'):
+            number_price = 1
+        elif(price == '$$'):
+            number_price = 2
+        elif(price == '$$$'):
+            number_price = 3
+        else:
+            number_price = 4
+        x = location.split(", ")
+        results = query_api(term = type, latitude = x[0], longitude = x[1], price = number_price);
+        if not results:
+            results = []
+        return render_template('results.html', results = results, price = price)
+    else:
+        return render_template('geolocation.html')
 
 if __name__ == '__main__':
-   app.run(debug = False, port = 0)
+   app.run(host = 'localhost', debug = True, port = 5000)
