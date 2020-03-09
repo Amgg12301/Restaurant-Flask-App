@@ -33,12 +33,12 @@ table{
 <body>
 <p style="font-family:optima;color:white;size:10;font-size:40px">Here are Your Results for Price Range: {{price}} </p>
         <div>
-            <table style="width:100%;height: 200px;" border="1">
+            <table style="width:100%;height: 200px;" border="1" id = "myTable">
                 <thead>
                     <th align="center">Name (Click on the name for its URL!)</th>
                     <th align="center">Phone Number</th>
                     <th align="center">Location</th>
-                    <th align="center">Distance from You (Meters)</th>
+                    <th align="center">Distance from You (Miles)</th>
                     <th align="center">Rating</th>
                 </thead>
                 <tbody>
@@ -62,6 +62,14 @@ table{
  <div id="mapDiv" style="width: 700px; height: 500px; top: 50%"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
+
+    var myTable = document.getElementById('myTable');
+    var i;
+    for(i = 1; i < 11; i++){
+        myTable.rows[i].cells[3].innerHTML = parseFloat(Number(myTable.rows[i].cells[3].innerHTML).toFixed(3)) *
+                                                                parseFloat(Number('0.000621371').toFixed(3));
+    }
+
     map = L.map('mapDiv').setView([{{latitude}}, {{longitude}}], 13);
     {% for i in results %}
         var pos = {
