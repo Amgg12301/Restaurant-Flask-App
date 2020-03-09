@@ -44,10 +44,10 @@ table{
                 <tbody>
                     {% for i in results %}
                         <td onclick="location.href={{i.url}}"><a href={{i.url}}>{{i.name}}</a></td>
-                        <td data-th="Phone Number">{{i.display_phone}}</td>
-                        <td data-th="Address">{{i.location.address1}}, {{i.location.city}}, {{i.location.state}} {{ i.location.zip_code}}</td>
-                        <td data-th="Distance">{{i.distance}}</td>
-                        <td data-th="Rating">{{i.rating}}</td>
+                        <td data-type="Phone Number">{{i.display_phone}}</td>
+                        <td data-type="Address">{{i.location.address1}}, {{i.location.city}}, {{i.location.state}} {{ i.location.zip_code}}</td>
+                        <td data-type="Distance">{{i.distance}}</td>
+                        <td data-type="Rating">{{i.rating}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
