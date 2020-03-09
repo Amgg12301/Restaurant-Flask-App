@@ -66,8 +66,8 @@ table{
     var myTable = document.getElementById('myTable');
     var i;
     for(i = 1; i < 11; i++){
-        myTable.rows[i].cells[3].innerHTML = parseFloat(Number(myTable.rows[i].cells[3].innerHTML).toFixed(3)) *
-                                                                parseFloat(Number('0.000621371').toFixed(3));
+        myTable.rows[i].cells[3].innerHTML = (parseFloat(Number(myTable.rows[i].cells[3].innerHTML)) *
+                                                                parseFloat(Number('0.000621371'))).toFixed(2);
     }
 
     map = L.map('mapDiv').setView([{{latitude}}, {{longitude}}], 13);
