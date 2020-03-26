@@ -1,5 +1,5 @@
 # Flask-Web-App
-Update: With this web application I built in two weeks, I was amongst the top 40 invited to attend 
+With this web application I built in two weeks, I was amongst the top 40 invited to attend 
 Capital One's Software Engineering Summit in Clarendon, Virginia.
 
 This is for Part 2 (The Coding Challenge by MindSumo) of my application for Capital One's Software 
