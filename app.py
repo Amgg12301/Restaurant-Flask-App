@@ -18,7 +18,7 @@ def results():
         type = request.form['type']
         location = request.form['location']
         price = request.form['price']
-        number = request.form['number']
+        number = int(request.form['number'])
         transactions = []
 
         if number > 50:
