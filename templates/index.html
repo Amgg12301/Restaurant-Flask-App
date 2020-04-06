@@ -52,6 +52,8 @@ label {
           <input id = "price" type="radio" name="price" value="$$$" required/> <label for="price" style="color:white;">&nbsp;$31-$60</label>
           <input id = "price" type="radio" name="price" value="$$$$" required/> <label for="price" style="color:white;">&nbsp;Over $61</label>
           </div>
+          <p style="font-family:optima;color:white;size:0">How many Restaurants do you want to see?</p>
+          <p><input type = "number" name = "number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"required/></p>
          <p><input type = "submit" value = "submit" /></p>
       </form>
 
