@@ -39,15 +39,17 @@ table{
                     <th align="center">Phone Number</th>
                     <th align="center">Location</th>
                     <th align="center">Distance from You (Miles)</th>
+                    <th align="center">Supported Transaction Methods</th>
                     <th align="center">Rating</th>
                 </thead>
                 <tbody>
-                    {% for i in results %}
-                        <td onclick="location.href={{i.url}}"><a href={{i.url}}>{{i.name}}</a></td>
-                        <td data-type="Phone Number">{{i.display_phone}}</td>
-                        <td data-type="Address">{{i.location.address1}}, {{i.location.city}}, {{i.location.state}} {{ i.location.zip_code}}</td>
-                        <td data-type="Distance">{{i.distance}}</td>
-                        <td data-type="Rating">{{i.rating}}</td>
+                    {% for result, transaction in results_and_transactions %}
+                        <td onclick="location.href={{result.url}}"><a href={{result.url}}>{{result.name}}</a></td>
+                        <td data-type="Phone Number">{{result.display_phone}}</td>
+                        <td data-type="Address">{{result.location.address1}}, {{result.location.city}}, {{result.location.state}} {{ result.location.zip_code}}</td>
+                        <td data-type="Distance">{{result.distance}}</td>
+                        <td data-type="Transactions">{{transaction}}</td>
+                        <td data-type="Rating">{{result.rating}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
