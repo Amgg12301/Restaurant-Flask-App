@@ -18,6 +18,7 @@ def results():
         type = request.form['type']
         location = request.form['location']
         price = request.form['price']
+        number = request.form['number']
         transactions = []
 
         if price == '$':
@@ -32,12 +33,13 @@ def results():
         x = location.split(", ")
         latitude = x[0]
         longitude = x[1]
-        results = query_api(term=type, latitude=latitude, longitude=longitude, price=number_price)
+        results = query_api(term=type, latitude=latitude, longitude=longitude, price=number_price, number=number)
 
         if not results:
             results = []
 
         for business in results:
+            print(business['transactions'])
             if 'delivery' in business['transactions'] and 'pickup' in business['transactions']:
                 transactions.append("Delivery and Pickup are both available!")
             elif 'pickup' in business['transactions']:

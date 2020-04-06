@@ -1,17 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Yelp Fusion API code sample.
-This program demonstrates the capability of the Yelp Fusion API
-by using the Search API to query for businesses by a search term and location,
-and the Business API to query additional information about the top result
-from the search query.
-Please refer to http://www.yelp.com/developers/v3/documentation for the API
-documentation.
-This program requires the Python requests library, which you can install via:
-`pip install -r requirements.txt`.
-Sample usage of the program:
-`python sample.py --term="bars" --location="San Francisco, CA"`
-"""
 from __future__ import print_function
 
 import argparse
@@ -21,40 +7,19 @@ import requests
 import sys
 import urllib
 
-
-# This client code can run on Python 2.x or 3.x.  Your imports can be
-# simpler if you only need one of those.
 try:
-    # For Python 3.0 and later
     from urllib.error import HTTPError
     from urllib.parse import quote
     from urllib.parse import urlencode
 except ImportError:
-    # Fall back to Python 2's urllib2 and urllib
     from urllib import HTTPError
     from urllib import quote
     from urllib import urlencode
 
-
-# Yelp Fusion no longer uses OAuth as of December 7, 2017.
-# You no longer need to provide Client ID to fetch Data
-# It now uses private keys to authenticate requests (API Key)
-# You can find it on
-# https://www.yelp.com/developers/v3/manage_app
 API_KEY = 'MLr3UDZ5PA4ZJOlKk0RsNvFDYwhARImGCXT0NF2zjcGZv1NsIsYtwRODsiURFyx75huuGJFe6T8RbTkExwAS2bMlxmeIa8TXMGfc545sAbMegzkboU6i7WziJTBkXnYx'
-
-
-# API constants, you shouldn't have to change these.
 API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
-BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
-
-
-# Defaults for our simple example.
-DEFAULT_TERM = 'dinner'
-DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 10
-
+BUSINESS_PATH = '/v3/businesses/'
 
 def request(host, path, api_key, url_params=None):
     """Given your API_KEY, send a GET request to the API.
@@ -81,7 +46,7 @@ def request(host, path, api_key, url_params=None):
     return response.json()
 
 
-def search(api_key, term, latitude, longitude, price):
+def search(api_key, term, latitude, longitude, price, number):
     """Query the Search API by a search term and location.
     Args:
         term (str): The search term passed to the API.
@@ -95,7 +60,7 @@ def search(api_key, term, latitude, longitude, price):
         'latitude': latitude,
         'longitude': longitude,
         'price': price,
-        'limit': SEARCH_LIMIT
+        'limit': number
     }
     return request(API_HOST, SEARCH_PATH, api_key, url_params=url_params)
 
@@ -112,13 +77,13 @@ def get_business(api_key, business_id):
     return request(API_HOST, business_path, api_key)
 
 
-def query_api(term, latitude, longitude, price):
+def query_api(term, latitude, longitude, price, number):
     """Queries the API by the input values from the user.
     Args:
         term (str): The search term to query.
         location (str): The location of the business to query.
     """
-    response = search(API_KEY, term, latitude, longitude, price)
+    response = search(API_KEY, term, latitude, longitude, price, number)
     businesses = response.get('businesses')
 
     if not businesses:
