@@ -15,4 +15,5 @@ To use the web application, go to https://amogh-flask-web.herokuapp.com/.
 Added functionality and visibility to see which restaurants out of your results supports delivery, 
 supports pickup, or supports both. This update is to help those in selecting a restaurant from their
 ideal restaurants to order food from if they prefer a certain transaction method over another or 
-don't care at all in this time of a global pandemic.
+don't care at all in this time of a global pandemic. Also added small option for users to input
+how many restaurants they want to see in their results created just for them using the Yelp API.
