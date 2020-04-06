@@ -1,4 +1,4 @@
-# Flask-Web-App
+# Restaurant Flask Web Application
 With this web application I built in two weeks, I was amongst the top 40 invited to attend 
 Capital One's Software Engineering Summit in Clarendon, Virginia.
 
@@ -10,3 +10,9 @@ They are able to see where the restaurants are relative to their location. This 
 HTML5 Geolocation to obtain the user's current location and Yelp's Fusion API to search for restaurants 
 based on the user's current location (latitude, longitude), type of food, and price range($, $$, $$$, $$$$). 
 To use the web application, go to https://amogh-flask-web.herokuapp.com/.
+
+# Coronavirus Update
+Added functionality and visibility to see which restaurants out of your results supports delivery, 
+supports pickup, or supports both. This update is to help those in selecting a restaurant from their
+ideal restaurants to order food from if they prefer a certain transaction method over another or 
+don't care at all in this time of a global pandemic.
