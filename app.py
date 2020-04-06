@@ -21,6 +21,11 @@ def results():
         number = request.form['number']
         transactions = []
 
+        if number > 50:
+            number = 50
+        elif number == 0:
+            number = 10
+
         if price == '$':
             number_price = 1
         elif price == '$$':
