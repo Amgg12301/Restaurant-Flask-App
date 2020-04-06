@@ -1,4 +1,4 @@
-# Restaurant Flask Web Application
+# Restaurant Yelp Fusion API Flask Web Application
 With this web application I built in two weeks, I was amongst the top 40 invited to attend 
 Capital One's Software Engineering Summit in Clarendon, Virginia.
 
